@@ -51,6 +51,8 @@ public class ProcesarXML {
             agregarConceptos(conceptos);
             Node impuestos = doc.getElementsByTagName(Constantes.IMPUESTOS).item(0);
             agregarImpuestos(impuestos);
+            Node complemento = doc.getElementsByTagName(Constantes.COMPLEMENTO).item(0);
+            agregarComplementos(complemento);
         } catch (IOException | ParserConfigurationException | SAXException ex) {}
     }
     
@@ -78,7 +80,7 @@ public class ProcesarXML {
         }
     }
     
-    public void agregarConceptos(NodeList lista){
+    private void agregarConceptos(NodeList lista){
         LOGGER.info("Se inicia el agregado de conceptos.");
         ArrayList<Concepto> listCon = new ArrayList<>();
         for (int i = 0; i < lista.getLength(); i++) {
@@ -96,21 +98,19 @@ public class ProcesarXML {
         principal.addDataConceptos(listCon);
     }
     
-    public void agregarImpuestos(Node impuestos){
+    private void agregarImpuestos(Node impuestos){
         //Zona de impuestos
         String totalTra = ((Element) impuestos).getAttribute("totalImpuestosTrasladados");
         String totalRet = ((Element) impuestos).getAttribute("totalImpuestosRetenidos");
-        double totalTraslados = Double.parseDouble("".equals(totalTra) ? "0": totalTra);
-        double totalRetenciones = Double.parseDouble("".equals(totalRet) ? "0": totalRet);
-        LOGGER.info(totalRetenciones);
-        LOGGER.info(totalTraslados);
+        principal.setTextTotalRetenciones(totalRet);
+        principal.setTextTotalTraslados(totalTra);
         NodeList traslados = ((Element) impuestos).getElementsByTagName(Constantes.TRASLADOS).item(0).getChildNodes();
         agregarTraslados(traslados);
         NodeList retenciones = ((Element) impuestos).getElementsByTagName(Constantes.RETENCIONES).item(0).getChildNodes();
         agregarRetenciones(retenciones);
     }
     
-    public void agregarRetenciones(NodeList lista){
+    private void agregarRetenciones(NodeList lista){
         LOGGER.info("Se inicia el agregado de las retenciones.");
         ArrayList<Retencion> listRet = new ArrayList<>();
         for (int i = 0; i < lista.getLength(); i++) {
@@ -124,7 +124,7 @@ public class ProcesarXML {
         principal.addDataRetenciones(listRet);
     }
     
-    public void agregarTraslados(NodeList lista){
+    private void agregarTraslados(NodeList lista){
         LOGGER.info("Se inicia el agregado de las retenciones.");
         ArrayList<Traslado> listTra = new ArrayList<>();
         for (int i = 0; i < lista.getLength(); i++) {
@@ -139,5 +139,20 @@ public class ProcesarXML {
         principal.addDataTraslados(listTra);
     }
     
-    
+    private void agregarComplementos(Node node){
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+            Element elemento = (Element) node;
+            Element timbreFiscalD = (Element)elemento.getElementsByTagName("tfd:TimbreFiscalDigital").item(0);
+            String uuid = timbreFiscalD.getAttribute("UUID");
+            String fechaTimbrado = timbreFiscalD.getAttribute("FechaTimbrado");
+            String selloCFD = timbreFiscalD.getAttribute("selloCFD");
+            String certificadoSAT = timbreFiscalD.getAttribute("noCertificadoSAT");
+            String selloSAT = timbreFiscalD.getAttribute("selloSAT");
+            principal.setTextSelloCFD(selloCFD);
+            principal.setTextSelloSAT(selloSAT);
+            principal.setTextCertSAT(certificadoSAT);
+            principal.setTextUuid(uuid);
+            principal.setTextFechaTimbrado(fechaTimbrado);
+        }
+    }
 }

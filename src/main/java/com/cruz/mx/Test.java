@@ -75,18 +75,20 @@ public class Test {
 //                }
 //            }
 
-            Node comprobante = doc.getElementsByTagName("cfdi:Impuestos").item(0);
+            Node comprobante = doc.getElementsByTagName("cfdi:Complemento").item(0);
             if (comprobante.getNodeType() == Node.ELEMENT_NODE) {
                 Element elementoComprobante = (Element) comprobante;
-                System.out.println(elementoComprobante.getAttribute("totalImpuestosTrasladados"));
-                NodeList lista = elementoComprobante.getElementsByTagName("cfdi:Traslados").item(0).getChildNodes();
-                for (int i = 0; i < lista.getLength(); i++) {
-                    Node valor = (Node) lista.item(i);
-                    if(valor.getNodeType() == Node.ELEMENT_NODE){
-                        System.out.print(((Element) valor).getAttribute("importe") + " ");
-                        System.out.println(((Element) valor).getAttribute("impuesto"));
-                    }
-                }
+//                System.out.println(elementoComprobante.getAttribute("totalImpuestosTrasladados"));
+                Node timbreFiscalD = elementoComprobante.getElementsByTagName("tfd:TimbreFiscalDigital").item(0);
+                System.out.println(((Element) timbreFiscalD).getAttribute("version"));
+//                NodeList lista = elementoComprobante.getElementsByTagName("cfdi:Traslados").item(0).getChildNodes();
+//                for (int i = 0; i < lista.getLength(); i++) {
+//                    Node valor = (Node) lista.item(i);
+//                    if(valor.getNodeType() == Node.ELEMENT_NODE){
+//                        System.out.print(((Element) valor).getAttribute("importe") + " ");
+//                        System.out.println(((Element) valor).getAttribute("impuesto"));
+//                    }
+//                }
             }
         } catch (Exception ex) {
             System.out.println(ex);

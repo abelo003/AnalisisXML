@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.log4j.Logger;
@@ -123,50 +124,50 @@ public class Principal extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        texttipoDeComprobante1 = new javax.swing.JTextField();
-        texttipoDeComprobante2 = new javax.swing.JTextField();
+        textNombreEmisor = new javax.swing.JTextField();
+        textRFCEmisor = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        texttipoDeComprobante4 = new javax.swing.JTextField();
-        texttipoDeComprobante3 = new javax.swing.JTextField();
-        texttipoDeComprobante5 = new javax.swing.JTextField();
-        texttipoDeComprobante6 = new javax.swing.JTextField();
+        textCalleF = new javax.swing.JTextField();
+        textNumExtF = new javax.swing.JTextField();
+        textColoniaF = new javax.swing.JTextField();
+        textLocalidadF = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        texttipoDeComprobante7 = new javax.swing.JTextField();
-        texttipoDeComprobante8 = new javax.swing.JTextField();
-        texttipoDeComprobante9 = new javax.swing.JTextField();
+        textCPF = new javax.swing.JTextField();
+        textMunicipioF = new javax.swing.JTextField();
+        textEstadoF = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        texttipoDeComprobante10 = new javax.swing.JTextField();
+        textPaisF = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        texttipoDeComprobante11 = new javax.swing.JTextField();
-        texttipoDeComprobante12 = new javax.swing.JTextField();
-        texttipoDeComprobante13 = new javax.swing.JTextField();
-        texttipoDeComprobante14 = new javax.swing.JTextField();
+        textCalleEx = new javax.swing.JTextField();
+        textNumExtEx = new javax.swing.JTextField();
+        textColoniaEx = new javax.swing.JTextField();
+        textLocalidadEx = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        texttipoDeComprobante15 = new javax.swing.JTextField();
-        texttipoDeComprobante16 = new javax.swing.JTextField();
-        texttipoDeComprobante17 = new javax.swing.JTextField();
+        textCPEx = new javax.swing.JTextField();
+        textMunicipioEx = new javax.swing.JTextField();
+        textEstadoEx = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        texttipoDeComprobante18 = new javax.swing.JTextField();
+        textPaisEx = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        textAreaNombreReceptor = new javax.swing.JTextArea();
+        textRFCReceptor = new javax.swing.JTextField();
         panelConceptos = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaConceptos = new javax.swing.JTable();
@@ -190,11 +191,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        texttipoDeComprobante19 = new javax.swing.JTextField();
-        texttipoDeComprobante20 = new javax.swing.JTextField();
-        texttipoDeComprobante21 = new javax.swing.JTextField();
-        texttipoDeComprobante22 = new javax.swing.JTextField();
-        texttipoDeComprobante23 = new javax.swing.JTextField();
+        textUuid = new javax.swing.JTextField();
+        textFechaTimbrado = new javax.swing.JTextField();
+        textSelloCFD = new javax.swing.JTextField();
+        textCertSAT = new javax.swing.JTextField();
+        textSelloSAT = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuSeleccionarArchivo = new javax.swing.JMenuItem();
@@ -239,18 +240,8 @@ public class Principal extends javax.swing.JFrame {
         texttipoDeComprobante.setEditable(false);
 
         textdescuento.setEditable(false);
-        textdescuento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textdescuentoActionPerformed(evt);
-            }
-        });
 
         textTipoCambio.setEditable(false);
-        textTipoCambio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textTipoCambioActionPerformed(evt);
-            }
-        });
 
         textMontoFolioFiscalOrig.setEditable(false);
 
@@ -280,11 +271,6 @@ public class Principal extends javax.swing.JFrame {
         textformaDePago.setEditable(false);
 
         textmetodoDePago.setEditable(false);
-        textmetodoDePago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textmetodoDePagoActionPerformed(evt);
-            }
-        });
 
         textMoneda.setEditable(false);
 
@@ -427,17 +413,17 @@ public class Principal extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel24.setText("Domicilio fiscal");
 
-        texttipoDeComprobante1.setEditable(false);
+        textNombreEmisor.setEditable(false);
 
-        texttipoDeComprobante2.setEditable(false);
+        textRFCEmisor.setEditable(false);
 
-        texttipoDeComprobante4.setEditable(false);
+        textCalleF.setEditable(false);
 
-        texttipoDeComprobante3.setEditable(false);
+        textNumExtF.setEditable(false);
 
-        texttipoDeComprobante5.setEditable(false);
+        textColoniaF.setEditable(false);
 
-        texttipoDeComprobante6.setEditable(false);
+        textLocalidadF.setEditable(false);
 
         jLabel31.setText("Calle");
 
@@ -449,11 +435,11 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel26.setText("CP");
 
-        texttipoDeComprobante7.setEditable(false);
+        textCPF.setEditable(false);
 
-        texttipoDeComprobante8.setEditable(false);
+        textMunicipioF.setEditable(false);
 
-        texttipoDeComprobante9.setEditable(false);
+        textEstadoF.setEditable(false);
 
         jLabel30.setText("Municipio");
 
@@ -461,7 +447,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel29.setText("País");
 
-        texttipoDeComprobante10.setEditable(false);
+        textPaisF.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -473,7 +459,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel26)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(texttipoDeComprobante7, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel32)
@@ -483,22 +469,22 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(texttipoDeComprobante6, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(texttipoDeComprobante5, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(texttipoDeComprobante8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(texttipoDeComprobante9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(textLocalidadF, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textColoniaF, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textMunicipioF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textEstadoF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(texttipoDeComprobante10, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textPaisF, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel31)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(texttipoDeComprobante4, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textCalleF, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel27)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(texttipoDeComprobante3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textNumExtF, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -506,47 +492,47 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textCalleF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel31)
                     .addComponent(jLabel27)
-                    .addComponent(texttipoDeComprobante3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textNumExtF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textColoniaF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel32))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textLocalidadF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26)
-                    .addComponent(texttipoDeComprobante7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(texttipoDeComprobante8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textMunicipioF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(texttipoDeComprobante9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textEstadoF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel29)
-                    .addComponent(texttipoDeComprobante10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textPaisF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
 
         jLabel41.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel41.setText("Expedido en");
 
-        texttipoDeComprobante11.setEditable(false);
+        textCalleEx.setEditable(false);
 
-        texttipoDeComprobante12.setEditable(false);
+        textNumExtEx.setEditable(false);
 
-        texttipoDeComprobante13.setEditable(false);
+        textColoniaEx.setEditable(false);
 
-        texttipoDeComprobante14.setEditable(false);
+        textLocalidadEx.setEditable(false);
 
         jLabel33.setText("Calle");
 
@@ -558,11 +544,11 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel37.setText("CP");
 
-        texttipoDeComprobante15.setEditable(false);
+        textCPEx.setEditable(false);
 
-        texttipoDeComprobante16.setEditable(false);
+        textMunicipioEx.setEditable(false);
 
-        texttipoDeComprobante17.setEditable(false);
+        textEstadoEx.setEditable(false);
 
         jLabel38.setText("Municipio");
 
@@ -570,7 +556,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel40.setText("País");
 
-        texttipoDeComprobante18.setEditable(false);
+        textPaisEx.setEditable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -582,7 +568,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(texttipoDeComprobante15, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textCPEx, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel35)
@@ -592,22 +578,22 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(texttipoDeComprobante14, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(texttipoDeComprobante13, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(texttipoDeComprobante16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(texttipoDeComprobante17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(textLocalidadEx, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(textColoniaEx, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textMunicipioEx, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textEstadoEx, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel40)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(texttipoDeComprobante18, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textPaisEx, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(texttipoDeComprobante11, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textCalleEx, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(texttipoDeComprobante12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(textNumExtEx, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -615,34 +601,34 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textCalleEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33)
                     .addComponent(jLabel34)
-                    .addComponent(texttipoDeComprobante12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textNumExtEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textColoniaEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textLocalidadEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel36))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel37)
-                    .addComponent(texttipoDeComprobante15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textCPEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(texttipoDeComprobante16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textMunicipioEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel38))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(texttipoDeComprobante17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textEstadoEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel40)
-                    .addComponent(texttipoDeComprobante18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textPaisEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
 
@@ -665,9 +651,9 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(jLabel22)
                                 .addGap(57, 57, 57)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(texttipoDeComprobante1)
+                                    .addComponent(textNombreEmisor)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(texttipoDeComprobante2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textRFCEmisor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 216, Short.MAX_VALUE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -685,11 +671,11 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(texttipoDeComprobante1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textNombreEmisor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(texttipoDeComprobante2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textRFCEmisor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
@@ -710,12 +696,12 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel43.setText("RFC");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textAreaNombreReceptor.setEditable(false);
+        textAreaNombreReceptor.setColumns(20);
+        textAreaNombreReceptor.setRows(5);
+        jScrollPane1.setViewportView(textAreaNombreReceptor);
 
-        jTextField1.setEditable(false);
+        textRFCReceptor.setEditable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -733,7 +719,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel43)
                         .addGap(39, 39, 39)
-                        .addComponent(jTextField1)))
+                        .addComponent(textRFCReceptor)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -748,7 +734,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textRFCReceptor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -917,40 +903,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel52.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel52.setText("Complemento");
 
-        texttipoDeComprobante19.setEditable(false);
-        texttipoDeComprobante19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                texttipoDeComprobante19ActionPerformed(evt);
-            }
-        });
+        textUuid.setEditable(false);
 
-        texttipoDeComprobante20.setEditable(false);
-        texttipoDeComprobante20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                texttipoDeComprobante20ActionPerformed(evt);
-            }
-        });
+        textFechaTimbrado.setEditable(false);
 
-        texttipoDeComprobante21.setEditable(false);
-        texttipoDeComprobante21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                texttipoDeComprobante21ActionPerformed(evt);
-            }
-        });
+        textSelloCFD.setEditable(false);
 
-        texttipoDeComprobante22.setEditable(false);
-        texttipoDeComprobante22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                texttipoDeComprobante22ActionPerformed(evt);
-            }
-        });
+        textCertSAT.setEditable(false);
 
-        texttipoDeComprobante23.setEditable(false);
-        texttipoDeComprobante23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                texttipoDeComprobante23ActionPerformed(evt);
-            }
-        });
+        textSelloSAT.setEditable(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -969,14 +930,14 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel51))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(texttipoDeComprobante23)
-                            .addComponent(texttipoDeComprobante22)
+                            .addComponent(textSelloSAT)
+                            .addComponent(textCertSAT)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(texttipoDeComprobante20, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(texttipoDeComprobante19, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(textFechaTimbrado, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textUuid, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 472, Short.MAX_VALUE))
-                            .addComponent(texttipoDeComprobante21))))
+                            .addComponent(textSelloCFD))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -987,22 +948,22 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
-                    .addComponent(texttipoDeComprobante19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textUuid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel48)
-                    .addComponent(texttipoDeComprobante20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFechaTimbrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textSelloCFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel49))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textCertSAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel50))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(texttipoDeComprobante23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textSelloSAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel51))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1093,6 +1054,7 @@ public class Principal extends javax.swing.JFrame {
         jChooser.setDialogTitle("Selección de factura");
         int seleccion = jChooser.showOpenDialog(this);
         if( seleccion == JFileChooser.APPROVE_OPTION ){
+            limpiarCampos();//Se limpian todos los campos
             File file = jChooser.getSelectedFile();
             StringBuilder sBuffer = new StringBuilder();
             if(null != file){
@@ -1123,38 +1085,6 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_menuSeleccionarArchivoActionPerformed
-
-    private void textTipoCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTipoCambioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textTipoCambioActionPerformed
-
-    private void textmetodoDePagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textmetodoDePagoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textmetodoDePagoActionPerformed
-
-    private void textdescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textdescuentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textdescuentoActionPerformed
-
-    private void texttipoDeComprobante19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texttipoDeComprobante19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_texttipoDeComprobante19ActionPerformed
-
-    private void texttipoDeComprobante20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texttipoDeComprobante20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_texttipoDeComprobante20ActionPerformed
-
-    private void texttipoDeComprobante21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texttipoDeComprobante21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_texttipoDeComprobante21ActionPerformed
-
-    private void texttipoDeComprobante22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texttipoDeComprobante22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_texttipoDeComprobante22ActionPerformed
-
-    private void texttipoDeComprobante23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_texttipoDeComprobante23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_texttipoDeComprobante23ActionPerformed
 
     public void addDataConceptos(ArrayList<Concepto> datos){
         for (Concepto dato : datos) {
@@ -1286,6 +1216,46 @@ public class Principal extends javax.swing.JFrame {
         this.texttotal.setText(text);
     }
 
+    public void setTextTotalRetenciones(String text) {
+        this.textTotalRetenciones.setText(text);
+    }
+
+    public void setTextTotalTraslados(String text) {
+        this.textTotalTraslados.setText(text);
+    }
+
+    public void setTextFechaTimbrado(String text) {
+        this.textFechaTimbrado.setText(text);
+    }
+
+    public void setTextSelloCFD(String text) {
+        this.textSelloCFD.setText(text);
+    }
+
+    public void setTextSelloSAT(String text) {
+        this.textSelloSAT.setText(text);
+    }
+
+    public void setTextUuid(String text) {
+        this.textUuid.setText(text);
+    }
+
+    public void setTextCertSAT(String text) {
+        this.textCertSAT.setText(text);
+    }
+    
+    private void limpiarCampos(){
+        modelConceptos.emptyData();
+        modelConceptos.fireTableDataChanged();
+        tablaConceptos.repaint();
+        modelRetenciones.emptyData();
+        modelRetenciones.fireTableDataChanged();
+        tablaRetenciones.repaint();
+        modelTraslados.emptyData();
+        modelTraslados.fireTableDataChanged();
+        tablaTraslados.repaint();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1362,8 +1332,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelVersion;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuSeleccionarArchivo;
@@ -1375,15 +1343,40 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable tablaConceptos;
     private javax.swing.JTable tablaRetenciones;
     private javax.swing.JTable tablaTraslados;
+    private javax.swing.JTextArea textAreaNombreReceptor;
+    private javax.swing.JTextField textCPEx;
+    private javax.swing.JTextField textCPF;
+    private javax.swing.JTextField textCalleEx;
+    private javax.swing.JTextField textCalleF;
+    private javax.swing.JTextField textCertSAT;
+    private javax.swing.JTextField textColoniaEx;
+    private javax.swing.JTextField textColoniaF;
+    private javax.swing.JTextField textEstadoEx;
+    private javax.swing.JTextField textEstadoF;
     private javax.swing.JTextField textFechaFolioFiscalOrig;
+    private javax.swing.JTextField textFechaTimbrado;
     private javax.swing.JTextField textFolioFiscalOrig;
+    private javax.swing.JTextField textLocalidadEx;
+    private javax.swing.JTextField textLocalidadF;
     private javax.swing.JTextField textLugarExpedicion;
     private javax.swing.JTextField textMoneda;
     private javax.swing.JTextField textMontoFolioFiscalOrig;
+    private javax.swing.JTextField textMunicipioEx;
+    private javax.swing.JTextField textMunicipioF;
+    private javax.swing.JTextField textNombreEmisor;
+    private javax.swing.JTextField textNumExtEx;
+    private javax.swing.JTextField textNumExtF;
+    private javax.swing.JTextField textPaisEx;
+    private javax.swing.JTextField textPaisF;
+    private javax.swing.JTextField textRFCEmisor;
+    private javax.swing.JTextField textRFCReceptor;
+    private javax.swing.JTextField textSelloCFD;
+    private javax.swing.JTextField textSelloSAT;
     private javax.swing.JTextField textSerieFolioFiscalOrig;
     private javax.swing.JTextField textTipoCambio;
     private javax.swing.JTextField textTotalRetenciones;
     private javax.swing.JTextField textTotalTraslados;
+    private javax.swing.JTextField textUuid;
     private javax.swing.JTextField textcondicionesDePago;
     private javax.swing.JTextField textdescuento;
     private javax.swing.JTextField textfecha;
@@ -1393,37 +1386,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField textserie;
     private javax.swing.JTextField textsubTotal;
     private javax.swing.JTextField texttipoDeComprobante;
-    private javax.swing.JTextField texttipoDeComprobante1;
-    private javax.swing.JTextField texttipoDeComprobante10;
-    private javax.swing.JTextField texttipoDeComprobante11;
-    private javax.swing.JTextField texttipoDeComprobante12;
-    private javax.swing.JTextField texttipoDeComprobante13;
-    private javax.swing.JTextField texttipoDeComprobante14;
-    private javax.swing.JTextField texttipoDeComprobante15;
-    private javax.swing.JTextField texttipoDeComprobante16;
-    private javax.swing.JTextField texttipoDeComprobante17;
-    private javax.swing.JTextField texttipoDeComprobante18;
-    private javax.swing.JTextField texttipoDeComprobante19;
-    private javax.swing.JTextField texttipoDeComprobante2;
-    private javax.swing.JTextField texttipoDeComprobante20;
-    private javax.swing.JTextField texttipoDeComprobante21;
-    private javax.swing.JTextField texttipoDeComprobante22;
-    private javax.swing.JTextField texttipoDeComprobante23;
     private javax.swing.JTextField texttipoDeComprobante24;
     private javax.swing.JTextField texttipoDeComprobante25;
     private javax.swing.JTextField texttipoDeComprobante26;
     private javax.swing.JTextField texttipoDeComprobante27;
     private javax.swing.JTextField texttipoDeComprobante28;
     private javax.swing.JTextField texttipoDeComprobante29;
-    private javax.swing.JTextField texttipoDeComprobante3;
     private javax.swing.JTextField texttipoDeComprobante30;
     private javax.swing.JTextField texttipoDeComprobante31;
-    private javax.swing.JTextField texttipoDeComprobante4;
-    private javax.swing.JTextField texttipoDeComprobante5;
-    private javax.swing.JTextField texttipoDeComprobante6;
-    private javax.swing.JTextField texttipoDeComprobante7;
-    private javax.swing.JTextField texttipoDeComprobante8;
-    private javax.swing.JTextField texttipoDeComprobante9;
     private javax.swing.JTextField texttotal;
     // End of variables declaration//GEN-END:variables
 }
