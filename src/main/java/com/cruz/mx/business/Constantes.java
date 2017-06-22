@@ -28,6 +28,5 @@ public class Constantes {
     public static final String RETENCIONES = "cfdi:Retenciones";
     //Datos adicionales
     public static final String COMPLEMENTO = "cfdi:Complemento";
-    public static final String TIMBRE_FISCAL_DIGITAL = "tfd:TimbreFiscalDigital";
     
 }

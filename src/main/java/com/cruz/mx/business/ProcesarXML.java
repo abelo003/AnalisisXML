@@ -30,7 +30,7 @@ import org.xml.sax.SAXException;
 public class ProcesarXML {
     
     private static final Logger LOGGER = Logger.getLogger(ProcesarXML.class);
-    private Principal principal;
+    private final Principal principal;
     public String cadenaXML;
 
     public ProcesarXML(String cadenaXML, Principal principal) {
@@ -53,10 +53,17 @@ public class ProcesarXML {
             agregarImpuestos(impuestos);
             Node complemento = doc.getElementsByTagName(Constantes.COMPLEMENTO).item(0);
             agregarComplementos(complemento);
-        } catch (IOException | ParserConfigurationException | SAXException ex) {}
+            Node receptor = doc.getElementsByTagName(Constantes.RECEPTOR).item(0);
+            agregarDatosReceptor(receptor);
+            Node emisor = doc.getElementsByTagName(Constantes.EMISOR).item(0);
+            agregarDatosEmisor(emisor);
+        } catch (IOException | ParserConfigurationException | SAXException ex) {
+            LOGGER.info("Falló la lectura de las propiedades del xml.", ex);
+        }
     }
     
     private void agregarGenerales(Node node){
+        LOGGER.info("Se inicia el agregado de los datos generales.");
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             Element elemento = (Element) node;
             principal.setLabelVersion(elemento.getAttribute("version"));
@@ -100,14 +107,21 @@ public class ProcesarXML {
     
     private void agregarImpuestos(Node impuestos){
         //Zona de impuestos
-        String totalTra = ((Element) impuestos).getAttribute("totalImpuestosTrasladados");
-        String totalRet = ((Element) impuestos).getAttribute("totalImpuestosRetenidos");
-        principal.setTextTotalRetenciones(totalRet);
-        principal.setTextTotalTraslados(totalTra);
-        NodeList traslados = ((Element) impuestos).getElementsByTagName(Constantes.TRASLADOS).item(0).getChildNodes();
-        agregarTraslados(traslados);
-        NodeList retenciones = ((Element) impuestos).getElementsByTagName(Constantes.RETENCIONES).item(0).getChildNodes();
-        agregarRetenciones(retenciones);
+        if (null != impuestos && impuestos.getNodeType() == Node.ELEMENT_NODE) {
+            LOGGER.info("Se inicia el agregado de los impuestos.");
+            String totalTra = ((Element) impuestos).getAttribute("totalImpuestosTrasladados");
+            String totalRet = ((Element) impuestos).getAttribute("totalImpuestosRetenidos");
+            principal.setTextTotalRetenciones(totalRet);
+            principal.setTextTotalTraslados(totalTra);
+            Node nodeTrastlados = ((Element) impuestos).getElementsByTagName(Constantes.TRASLADOS).item(0);
+            if (null != nodeTrastlados && nodeTrastlados.getNodeType() == Node.ELEMENT_NODE) {
+                agregarTraslados(nodeTrastlados.getChildNodes());
+            }
+            Node nodeRetenciones = ((Element) impuestos).getElementsByTagName(Constantes.RETENCIONES).item(0);
+            if (null != nodeRetenciones && nodeRetenciones.getNodeType() == Node.ELEMENT_NODE) {
+                agregarRetenciones(nodeRetenciones.getChildNodes());
+            }
+        }
     }
     
     private void agregarRetenciones(NodeList lista){
@@ -125,7 +139,7 @@ public class ProcesarXML {
     }
     
     private void agregarTraslados(NodeList lista){
-        LOGGER.info("Se inicia el agregado de las retenciones.");
+        LOGGER.info("Se inicia el agregado de las traslados.");
         ArrayList<Traslado> listTra = new ArrayList<>();
         for (int i = 0; i < lista.getLength(); i++) {
             Node valor = (Node) lista.item(i);
@@ -140,19 +154,108 @@ public class ProcesarXML {
     }
     
     private void agregarComplementos(Node node){
-        if (node.getNodeType() == Node.ELEMENT_NODE) {
+        LOGGER.info("Se agrega la información de complemento.");
+        if (null != node && node.getNodeType() == Node.ELEMENT_NODE) {
             Element elemento = (Element) node;
             Element timbreFiscalD = (Element)elemento.getElementsByTagName("tfd:TimbreFiscalDigital").item(0);
-            String uuid = timbreFiscalD.getAttribute("UUID");
-            String fechaTimbrado = timbreFiscalD.getAttribute("FechaTimbrado");
-            String selloCFD = timbreFiscalD.getAttribute("selloCFD");
-            String certificadoSAT = timbreFiscalD.getAttribute("noCertificadoSAT");
-            String selloSAT = timbreFiscalD.getAttribute("selloSAT");
-            principal.setTextSelloCFD(selloCFD);
-            principal.setTextSelloSAT(selloSAT);
-            principal.setTextCertSAT(certificadoSAT);
-            principal.setTextUuid(uuid);
-            principal.setTextFechaTimbrado(fechaTimbrado);
+            if (null != timbreFiscalD && timbreFiscalD.getNodeType() == Node.ELEMENT_NODE) {
+                String uuid = timbreFiscalD.getAttribute("UUID");
+                String fechaTimbrado = timbreFiscalD.getAttribute("FechaTimbrado");
+                String selloCFD = timbreFiscalD.getAttribute("selloCFD");
+                String certificadoSAT = timbreFiscalD.getAttribute("noCertificadoSAT");
+                String selloSAT = timbreFiscalD.getAttribute("selloSAT");
+                principal.setTextSelloCFD(selloCFD);
+                principal.setTextSelloSAT(selloSAT);
+                principal.setTextCertSAT(certificadoSAT);
+                principal.setTextUuid(uuid);
+                principal.setTextFechaTimbrado(fechaTimbrado);
+            }
+        }
+    }
+    
+    private void agregarDatosReceptor(Node node){
+        if (null != node && node.getNodeType() == Node.ELEMENT_NODE) {
+            Element elementoComprobante = (Element) node;
+            String nombre = elementoComprobante.getAttribute("nombre");
+            String rfc = elementoComprobante.getAttribute("rfc");
+            principal.setTextNombreReceptor(nombre);
+            principal.setTextRFCReceptor(rfc);
+            Node domicilio = elementoComprobante.getElementsByTagName("cfdi:Domicilio").item(0);
+            if (null != domicilio && domicilio.getNodeType() == Node.ELEMENT_NODE) {
+                Element domi = ((Element) domicilio);
+                String calle = domi.getAttribute("calle");
+                String numExt = domi.getAttribute("noExterior");
+                String colonia = domi.getAttribute("colonia");
+                String localidad = domi.getAttribute("localidad");
+                String municipio = domi.getAttribute("municipio");
+                String cp = domi.getAttribute("codigoPostal");
+                String estado = domi.getAttribute("estado");
+                String pais = domi.getAttribute("pais");
+                principal.setTextCalleR(calle);
+                principal.setTextNumExtR(numExt);
+                principal.setTextColoniaR(colonia);
+                principal.setTextLocalidadR(localidad);
+                principal.setTextMunicipioR(municipio);
+                principal.setTextCPR(cp);
+                principal.setTextEstadoR(estado);
+                principal.setTextPaisR(pais);
+            }
+        }
+    }
+    
+    private void agregarDatosEmisor(Node node){
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+            Element elementoComprobante = (Element) node;
+            String nombre = elementoComprobante.getAttribute("nombre");
+            String rfc = elementoComprobante.getAttribute("rfc");
+            principal.setTextNombreEmisor(nombre);
+            principal.setTextRFCEmisor(rfc);
+            Node domicilio = elementoComprobante.getElementsByTagName("cfdi:DomicilioFiscal").item(0);
+            if (null != domicilio && domicilio.getNodeType() == Node.ELEMENT_NODE) {
+                Element domi = ((Element) domicilio);
+                String calle = domi.getAttribute("calle");
+                String numExt = domi.getAttribute("noExterior");
+                String colonia = domi.getAttribute("colonia");
+                String localidad = domi.getAttribute("localidad");
+                String municipio = domi.getAttribute("municipio");
+                String cp = domi.getAttribute("codigoPostal");
+                String estado = domi.getAttribute("estado");
+                String pais = domi.getAttribute("pais");
+                principal.setTextCalleF(calle);
+                principal.setTextNumExtF(numExt);
+                principal.setTextColoniaF(colonia);
+                principal.setTextLocalidadF(localidad);
+                principal.setTextMunicipioF(municipio);
+                principal.setTextCPF(cp);
+                principal.setTextEstadoF(estado);
+                principal.setTextPaisF(pais);
+            }
+            Node regimenFiscal = elementoComprobante.getElementsByTagName("cfdi:RegimenFiscal").item(0);
+            if (null != regimenFiscal && regimenFiscal.getNodeType() == Node.ELEMENT_NODE) {
+                Element reg = ((Element) regimenFiscal);
+                String regimen = reg.getAttribute("Regimen");
+                principal.setTextRegimenEmisor(regimen);
+            }
+            Node expedicion = elementoComprobante.getElementsByTagName("cfdi:ExpedidoEn").item(0);
+            if (null != expedicion && expedicion.getNodeType() == Node.ELEMENT_NODE) {
+                Element domi = ((Element) expedicion);
+                String calle = domi.getAttribute("calle");
+                String numExt = domi.getAttribute("noExterior");
+                String colonia = domi.getAttribute("colonia");
+                String localidad = domi.getAttribute("localidad");
+                String municipio = domi.getAttribute("municipio");
+                String cp = domi.getAttribute("codigoPostal");
+                String estado = domi.getAttribute("estado");
+                String pais = domi.getAttribute("pais");
+                principal.setTextCalleEx(calle);
+                principal.setTextNumExtEx(numExt);
+                principal.setTextColoniaEx(colonia);
+                principal.setTextLocalidadEx(localidad);
+                principal.setTextMunicipioEx(municipio);
+                principal.setTextCPEx(cp);
+                principal.setTextEstadoEx(estado);
+                principal.setTextPaisEx(pais);
+            }
         }
     }
 }
