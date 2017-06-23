@@ -12,6 +12,7 @@ import com.cruz.mx.views.Principal;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -57,8 +58,9 @@ public class ProcesarXML {
             agregarDatosReceptor(receptor);
             Node emisor = doc.getElementsByTagName(Constantes.EMISOR).item(0);
             agregarDatosEmisor(emisor);
-        } catch (IOException | ParserConfigurationException | SAXException ex) {
+        } catch (Exception ex) {
             LOGGER.info("Falló la lectura de las propiedades del xml.", ex);
+            JOptionPane.showMessageDialog(principal, "No se pudo realizar la lectura del archivo.", "Formato incorrecto", JOptionPane.WARNING_MESSAGE);
         }
     }
     
