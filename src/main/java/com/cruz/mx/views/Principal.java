@@ -22,6 +22,9 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
@@ -31,6 +34,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.JTextComponent;
 import org.apache.log4j.Logger;
+import org.apache.tools.ant.DirectoryScanner;
 
 /**
  *
@@ -42,6 +46,8 @@ public class Principal extends javax.swing.JFrame {
     private final AbstractConcepto modelConceptos;
     private final AbstractRetenciones modelRetenciones;
     private final AbstractTraslados modelTraslados;
+    
+    public final static String XML_FORMAT = ".xml";
     
     /**
      * Creates new form Principal
@@ -221,6 +227,8 @@ public class Principal extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuSeleccionarArchivo = new javax.swing.JMenuItem();
+        menuSeleccionarCarpeta = new javax.swing.JMenuItem();
+        menuLimpiar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1162,15 +1170,31 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Herramientas");
+        jMenu1.setText("Archivo");
 
-        menuSeleccionarArchivo.setText("Seleccionar archivo");
+        menuSeleccionarArchivo.setText("Analizar archivo");
         menuSeleccionarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSeleccionarArchivoActionPerformed(evt);
             }
         });
         jMenu1.add(menuSeleccionarArchivo);
+
+        menuSeleccionarCarpeta.setText("Seleccionar carpeta");
+        menuSeleccionarCarpeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSeleccionarCarpetaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuSeleccionarCarpeta);
+
+        menuLimpiar.setText("Limpiar campos");
+        menuLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuLimpiarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuLimpiar);
 
         menuBar.add(jMenu1);
 
@@ -1235,6 +1259,37 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuSeleccionarArchivoActionPerformed
 
+    private void menuSeleccionarCarpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSeleccionarCarpetaActionPerformed
+        JFileChooser jChooser = new JFileChooser();
+        jChooser.setCurrentDirectory(new java.io.File("./"));
+        jChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        Action detalles = jChooser.getActionMap().get("viewTypeDetails");
+        detalles.actionPerformed(null);
+        jChooser.setDialogTitle("Selección de carpeta de trabajo");
+        int seleccion = jChooser.showOpenDialog(this);
+        if( seleccion == JFileChooser.APPROVE_OPTION ){
+            limpiarCampos();//Se limpian todos los campos
+            File folder = jChooser.getSelectedFile();
+            if(null != folder){
+                LOGGER.info("Se selecciona la carpeta: " + folder.getAbsolutePath());
+                DirectoryScanner scanner = new DirectoryScanner();
+                scanner.setIncludes(new String[]{"**/*" + Principal.XML_FORMAT});
+                scanner.setBasedir(folder);
+                scanner.setCaseSensitive(false);
+                scanner.scan();
+                String[] files = scanner.getIncludedFiles();
+                LOGGER.info("Se listan los archivos xml encontrados: " + files.length);
+                for (String file : files) {
+                    System.out.println(folder.toPath().resolve(file));
+                }
+            }
+        }
+    }//GEN-LAST:event_menuSeleccionarCarpetaActionPerformed
+
+    private void menuLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLimpiarActionPerformed
+        limpiarCampos();
+    }//GEN-LAST:event_menuLimpiarActionPerformed
+
     public void addDataConceptos(ArrayList<Concepto> datos){
         for (Concepto dato : datos) {
             modelConceptos.addData(dato);
@@ -1274,19 +1329,16 @@ public class Principal extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Principal().setVisible(true);
             }
@@ -1614,7 +1666,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelVersion;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuLimpiar;
     private javax.swing.JMenuItem menuSeleccionarArchivo;
+    private javax.swing.JMenuItem menuSeleccionarCarpeta;
     private javax.swing.JPanel panelEmisor;
     private javax.swing.JPanel panelInfoComplemento;
     private javax.swing.JPanel panelInfoConceptos;

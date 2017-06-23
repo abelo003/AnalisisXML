@@ -47,8 +47,8 @@ public class ProcesarXML {
 
             Node comprobante = doc.getElementsByTagName(Constantes.COMPROBANTE).item(0);
             agregarGenerales(comprobante);
-            NodeList conceptos = ((Element) comprobante).getElementsByTagName(Constantes.CONCEPTOS).item(0).getChildNodes();
-            agregarConceptos(conceptos);
+            Node nodeConceptos = ((Element) comprobante).getElementsByTagName(Constantes.CONCEPTOS).item(0);
+            agregarConceptos(nodeConceptos);
             Node impuestos = doc.getElementsByTagName(Constantes.IMPUESTOS).item(0);
             agregarImpuestos(impuestos);
             Node complemento = doc.getElementsByTagName(Constantes.COMPLEMENTO).item(0);
@@ -64,7 +64,7 @@ public class ProcesarXML {
     
     private void agregarGenerales(Node node){
         LOGGER.info("Se inicia el agregado de los datos generales.");
-        if (node.getNodeType() == Node.ELEMENT_NODE) {
+        if (null != node && node.getNodeType() == Node.ELEMENT_NODE) {
             Element elemento = (Element) node;
             principal.setLabelVersion(elemento.getAttribute("version"));
             principal.setTextMoneda(elemento.getAttribute("Moneda"));
@@ -87,22 +87,25 @@ public class ProcesarXML {
         }
     }
     
-    private void agregarConceptos(NodeList lista){
-        LOGGER.info("Se inicia el agregado de conceptos.");
-        ArrayList<Concepto> listCon = new ArrayList<>();
-        for (int i = 0; i < lista.getLength(); i++) {
-            Node valor = (Node) lista.item(i);
-            if(valor.getNodeType() == Node.ELEMENT_NODE){
-                double importe = Double.parseDouble(((Element) valor).getAttribute("importe"));
-                double valorUnitario = Double.parseDouble(((Element) valor).getAttribute("valorUnitario"));
-                String descripcion = ((Element) valor).getAttribute("descripcion");
-                String noIdentificacion = ((Element) valor).getAttribute("noIdentificacion");
-                String unidad = ((Element) valor).getAttribute("unidad");
-                double cantidad = Double.parseDouble(((Element) valor).getAttribute("cantidad"));
-                listCon.add(new Concepto(importe, valorUnitario, descripcion, noIdentificacion, unidad, cantidad));
+    private void agregarConceptos(Node node){
+        if(null != node && node.getNodeType() == Node.ELEMENT_NODE){
+            NodeList lista = node.getChildNodes();
+            LOGGER.info("Se inicia el agregado de conceptos.");
+            ArrayList<Concepto> listCon = new ArrayList<>();
+            for (int i = 0; i < lista.getLength(); i++) {
+                Node valor = (Node) lista.item(i);
+                if(valor.getNodeType() == Node.ELEMENT_NODE){
+                    double importe = Double.parseDouble(((Element) valor).getAttribute("importe"));
+                    double valorUnitario = Double.parseDouble(((Element) valor).getAttribute("valorUnitario"));
+                    String descripcion = ((Element) valor).getAttribute("descripcion");
+                    String noIdentificacion = ((Element) valor).getAttribute("noIdentificacion");
+                    String unidad = ((Element) valor).getAttribute("unidad");
+                    double cantidad = Double.parseDouble(((Element) valor).getAttribute("cantidad"));
+                    listCon.add(new Concepto(importe, valorUnitario, descripcion, noIdentificacion, unidad, cantidad));
+                }
             }
+            principal.addDataConceptos(listCon);
         }
-        principal.addDataConceptos(listCon);
     }
     
     private void agregarImpuestos(Node impuestos){
