@@ -35,7 +35,7 @@ public class ProcesarXML {
     public String cadenaXML;
 
     public ProcesarXML(String cadenaXML, Principal principal) {
-        this.cadenaXML = cadenaXML;
+        this.cadenaXML = cadenaXML.trim().replaceAll("\\p{C}", "");
         this.principal = principal;
     }
     
@@ -44,7 +44,7 @@ public class ProcesarXML {
             DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
             domFactory.setNamespaceAware(true);
             DocumentBuilder builder = domFactory.newDocumentBuilder();
-            Document doc = builder.parse(new InputSource(new StringReader(cadenaXML)));
+            Document doc = builder.parse(new InputSource(new StringReader(cadenaXML.trim())));
 
             Node comprobante = doc.getElementsByTagName(Constantes.COMPROBANTE).item(0);
             agregarGenerales(comprobante);
